@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- Dao: query 찾는 분류 기준 
+        namespace + id -> com.pcwk.ehr.anno.doSelectOne
+  -->
+  <mapper namespace="com.pcwk.ehr.account">
+    <resultMap type="UserVO"  id="userMap">
+        <result column = "no" property = "no"/>
+        <result column = "nm" property = "nm"/>
+        <result column = "birth" property = "birth"/>
+        <result column = "id" property = "id"/>
+        <result column = "pw" property = "pw"/>
+        <result column = "email" property = "email"/>
+        <result column = "reg_ymd" property = "reg_ymd"/>
+        <result column = "chat" property = "chat"/>
+        <result column = "act" property = "act"/>
+        <result column = "tier" property = "tier"/>
+        <result column = "click" property = "click"/>
+        <result column = "port" property = "port"/>
+        <result column = "pop_scr" property = "pop_scr"/>
+    </resultMap>
+    
+    <update id="changePw" parameterType = "UserVO">
+        UPDATE users
+        SET pw = #{pw}
+        WHERE id = #{id}
+    </update>
+    
+  
+    <delete id = "withdraw" parameterType = "UserVO">
+	    DELETE FROM users
+	    WHERE id = #{id}
+    </delete>
+    
+  </mapper>
